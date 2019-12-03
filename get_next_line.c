@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:53:32 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/03 10:55:40 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 13:01:03 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,16 @@ int		get_next_line(int fd, char **line)
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (memory[fd] == 0)
-		memory[fd] = "";
+	{
+		memory[fd] = malloc(sizeof(char) * 1);
+		memory[fd][0] = 0;
+	}
 	while ((bytes_read = read(fd, buff, BUFFER_SIZE)) >= 0)
 	{
 		buff[bytes_read] = '\0';
 		if (bytes_read > 0)
 		{
-			memory[fd] = ft_strjoin(memory[fd], buff);
+			mem_update(fd, memory, buff);
 			if ((nlpos = ft_strchr(memory[fd], '\n')))
 				return (read_update(fd, memory, nlpos, line));
 		}

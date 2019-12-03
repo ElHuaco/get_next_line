@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:54:27 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/03 11:03:57 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:09:38 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ char				*ft_strchr(char *str, int c);
 char				*ft_strdup(char *str);
 int					memread_update(int fd, char **mem, char **line);
 int					read_update(int fd, char **mem, char *n, char **line);
+void				mem_update(int fd, char **mem, char *buff);
 #endif

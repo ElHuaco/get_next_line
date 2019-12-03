@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 11:49:58 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/03 10:50:59 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 11:13:47 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int		memread_update(int fd, char **mem, char **line)
 	if ((nlpos = ft_strchr(mem[fd], '\n')))
 		return (read_update(fd, mem, nlpos, line));
 	else
+	{
 		*line = ft_strdup(mem[fd]);
+		mem[fd] = "";
+	}
 	return (0);
 }
 

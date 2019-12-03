@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 11:49:58 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/03 11:22:36 by aleon-ca         ###   ########.fr       */
+/*   Created: 2019/12/03 12:13:09 by aleon-ca          #+#    #+#             */
+/*   Updated: 2019/12/03 12:13:11 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int		memread_update(int fd, char **mem, char **line)
 {

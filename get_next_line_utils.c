@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 11:49:58 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/02 16:43:52 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 10:50:59 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,4 @@ int		read_update(int fd, char **mem, char *nlpos, char **line)
 	*line = ft_strdup(mem[fd]);
 	mem[fd] = nlpos + 1;
 	return (1);
-}
-
-void	mem_update(int fd, char **mem, char *buff)
-{
-	mem[fd] = ft_strjoin(mem[fd], buff);
 }

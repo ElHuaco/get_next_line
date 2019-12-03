@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:53:32 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/02 16:23:36 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 10:55:40 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*ft_strdup(char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	int				bits_read;
+	int				bytes_read;
 	static char		*memory[4096];
 	char			buff[BUFFER_SIZE + 1];
 	char			*nlpos;
@@ -103,12 +103,12 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (memory[fd] == 0)
 		memory[fd] = "";
-	while ((bits_read = read(fd, buff, BUFFER_SIZE)) >= 0)
+	while ((bytes_read = read(fd, buff, BUFFER_SIZE)) >= 0)
 	{
-		buff[bits_read + 1] = '\0';
-		if (bits_read > 0)
+		buff[bytes_read] = '\0';
+		if (bytes_read > 0)
 		{
-			mem_update(fd, memory, buff);
+			memory[fd] = ft_strjoin(memory[fd], buff);
 			if ((nlpos = ft_strchr(memory[fd], '\n')))
 				return (read_update(fd, memory, nlpos, line));
 		}

@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:53:32 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/03 13:01:03 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/03 16:33:47 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,28 +95,28 @@ char	*ft_strdup(char *str)
 int		get_next_line(int fd, char **line)
 {
 	int				bytes_read;
-	static char		*memory[4096];
-	char			buff[BUFFER_SIZE + 1];
-	char			*nlpos;
+	static char		*mem[4096];
+	char			*buff;
 
-	if (!line || fd < 0 || BUFFER_SIZE <= 0)
+	if (!line || fd < 0 || B_S <= 0 || !(buff = ft_zalloc(B_S + 1)))
 		return (-1);
-	if (memory[fd] == 0)
+	if (!mem[fd])
+		mem[fd] = ft_zalloc(1);
+	while ((bytes_read = read(fd, buff, B_S)) >= 0)
 	{
-		memory[fd] = malloc(sizeof(char) * 1);
-		memory[fd][0] = 0;
-	}
-	while ((bytes_read = read(fd, buff, BUFFER_SIZE)) >= 0)
-	{
-		buff[bytes_read] = '\0';
 		if (bytes_read > 0)
 		{
-			mem_update(fd, memory, buff);
-			if ((nlpos = ft_strchr(memory[fd], '\n')))
-				return (read_update(fd, memory, nlpos, line));
+			mem_update(fd, mem, buff);
+			if ((ft_strchr(mem[fd], '\n')))
+			{
+				free(buff);
+				return (read_update(fd, mem, ft_strchr(mem[fd], '\n'), line));
+			}
+			free(buff);
+			buff = ft_zalloc(BUFFER_SIZE + 1);
 		}
 		else
-			return (memread_update(fd, memory, line));
+			return (memread_update(fd, mem, line, buff));
 	}
 	return (-1);
 }

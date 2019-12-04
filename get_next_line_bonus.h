@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 12:11:46 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/04 12:11:47 by aleon-ca         ###   ########.fr       */
+/*   Created: 2019/12/04 12:29:55 by aleon-ca          #+#    #+#             */
+/*   Updated: 2019/12/04 12:30:03 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifdef BUFFER_SIZE
-#  define B_S BUFFER_SIZE
+#  define BS BUFFER_SIZE
 # endif
 
 # include <unistd.h>

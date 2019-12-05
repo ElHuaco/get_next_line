@@ -5,24 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 12:30:26 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/04 12:30:33 by aleon-ca         ###   ########.fr       */
+/*   Created: 2019/12/05 16:25:27 by aleon-ca          #+#    #+#             */
+/*   Updated: 2019/12/05 16:25:30 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int		memread_update(int fd, char **mem, char **line, char *buff)
+int		memread_update(int fd, char **mem, char **line)
 {
 	char		*nlpos;
 
-	if (buff)
-		free(buff);
 	if ((nlpos = ft_strchr(mem[fd], '\n')))
 		return (read_update(fd, mem, nlpos, line));
 	else
 	{
 		*line = ft_strdup(mem[fd]);
+		free(mem[fd]);
 		mem[fd] = 0;
 	}
 	return (0);

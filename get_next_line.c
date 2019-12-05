@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:53:32 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/04 12:26:08 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2019/12/05 16:21:48 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,9 @@ int		get_next_line(int fd, char **line)
 		free(buff);
 		buff = malloc(sizeof(char) * (BS + 1));
 	}
+	if (buff)
+		free(buff);
 	if (bytes_read == 0)
-		return (memread_update(fd, mem, line, buff));
-	else
-		return (-1);
+		return (memread_update(fd, mem, line));
+	return (-1);
 }

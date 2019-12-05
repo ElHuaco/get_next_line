@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 12:29:18 by aleon-ca          #+#    #+#             */
-/*   Updated: 2019/12/04 12:29:27 by aleon-ca         ###   ########.fr       */
+/*   Created: 2019/12/05 16:24:56 by aleon-ca          #+#    #+#             */
+/*   Updated: 2019/12/05 16:25:00 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,9 @@ int		get_next_line(int fd, char **line)
 		free(buff);
 		buff = malloc(sizeof(char) * (BS + 1));
 	}
+	if (buff)
+		free(buff);
 	if (bytes_read == 0)
-		return (memread_update(fd, mem, line, buff));
-	else
-		return (-1);
+		return (memread_update(fd, mem, line));
+	return (-1);
 }

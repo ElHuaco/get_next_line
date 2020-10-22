@@ -6,7 +6,7 @@
 /*   By: aleon-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 17:53:32 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/10/21 18:03:16 by aleon-ca         ###   ########.fr       */
+/*   Updated: 2020/10/21 18:09:22 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int				get_next_line(int fd, char **line)
 	int			bytes_read;
 	char		*buff;
 	char		*nl;
-	static char	*mem[4096];
+	static char	*mem[FOPEN_MAX];
 
 	if ((fd < 0) || !line || !(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
@@ -119,7 +119,7 @@ int				get_next_line(int fd, char **line)
 		buff[bytes_read] = '\0';
 		if ((nl = ft_strchr(mem_update_by_buff_join(fd, mem, buff), '\n')))
 			return (lineread__mem_trunc(fd, mem, nl, line));
-		buff = malloc(sizeof(char) * (BUFFER_SIZE));
+		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	}
 	if (buff)
 		free(buff);
